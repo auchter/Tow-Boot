@@ -1,0 +1,33 @@
+From ca3616e96f2a9d1721c070e74002c1671fffd8e4 Mon Sep 17 00:00:00 2001
+From: Michael Auchter <a@phire.org>
+Date: Thu, 29 Sep 2022 21:56:39 +0000
+Subject: [PATCH 5/5] configs: Enable ethernet on Pinecube
+
+Signed-off-by: Michael Auchter <a@phire.org>
+---
+ configs/pinecube_defconfig | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/configs/pinecube_defconfig b/configs/pinecube_defconfig
+index 11f3d31736..e203b8f94e 100644
+--- a/configs/pinecube_defconfig
++++ b/configs/pinecube_defconfig
+@@ -12,13 +12,14 @@ CONFIG_I2C0_ENABLE=y
+ CONFIG_SPL_SPI_SUNXI=y
+ CONFIG_SPL_I2C=y
+ CONFIG_ENV_IS_IN_SPI_FLASH=y
++CONFIG_NET_RANDOM_ETHADDR=y
+ CONFIG_MTD=y
+ CONFIG_DM_MTD=y
+ CONFIG_DM_SPI_FLASH=y
+ CONFIG_SPI_FLASH_WINBOND=y
+ CONFIG_SPI_FLASH_XTX=y
+ CONFIG_SPI_FLASH_MTD=y
+-# CONFIG_NETDEVICES is not set
++CONFIG_SUN8I_EMAC=y
+ CONFIG_AXP209_POWER=y
+ CONFIG_AXP_DCDC2_VOLT=1250
+ CONFIG_AXP_DCDC3_VOLT=3300
+-- 
+2.36.2
+

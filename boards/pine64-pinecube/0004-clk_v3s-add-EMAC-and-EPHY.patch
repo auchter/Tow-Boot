@@ -1,0 +1,47 @@
+From 500bdfe243cca5dd8ae1e3d0869c0262a5beb03c Mon Sep 17 00:00:00 2001
+From: Michael Auchter <a@phire.org>
+Date: Tue, 4 Oct 2022 14:12:47 +0000
+Subject: [PATCH 4/5] clk_v3s: add EMAC and EPHY
+
+Signed-off-by: Michael Auchter <a@phire.org>
+---
+ drivers/clk/sunxi/clk_v3s.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/drivers/clk/sunxi/clk_v3s.c b/drivers/clk/sunxi/clk_v3s.c
+index 29622199fd..55fc597043 100644
+--- a/drivers/clk/sunxi/clk_v3s.c
++++ b/drivers/clk/sunxi/clk_v3s.c
+@@ -17,6 +17,7 @@ static struct ccu_clk_gate v3s_gates[] = {
+ 	[CLK_BUS_MMC0]		= GATE(0x060, BIT(8)),
+ 	[CLK_BUS_MMC1]		= GATE(0x060, BIT(9)),
+ 	[CLK_BUS_MMC2]		= GATE(0x060, BIT(10)),
++	[CLK_BUS_EMAC]		= GATE(0x060, BIT(17)),
+ 	[CLK_BUS_SPI0]		= GATE(0x060, BIT(20)),
+ 	[CLK_BUS_OTG]		= GATE(0x060, BIT(24)),
+ 
+@@ -24,6 +25,8 @@ static struct ccu_clk_gate v3s_gates[] = {
+ 	[CLK_BUS_UART1]		= GATE(0x06c, BIT(17)),
+ 	[CLK_BUS_UART2]		= GATE(0x06c, BIT(18)),
+ 
++	[CLK_BUS_EPHY]		= GATE(0x070, BIT(0)),
++
+ 	[CLK_SPI0]		= GATE(0x0a0, BIT(31)),
+ 
+ 	[CLK_USB_PHY0]          = GATE(0x0cc, BIT(8)),
+@@ -35,9 +38,12 @@ static struct ccu_reset v3s_resets[] = {
+ 	[RST_BUS_MMC0]		= RESET(0x2c0, BIT(8)),
+ 	[RST_BUS_MMC1]		= RESET(0x2c0, BIT(9)),
+ 	[RST_BUS_MMC2]		= RESET(0x2c0, BIT(10)),
++	[RST_BUS_EMAC]		= RESET(0x2c0, BIT(17)),
+ 	[RST_BUS_SPI0]		= RESET(0x2c0, BIT(20)),
+ 	[RST_BUS_OTG]		= RESET(0x2c0, BIT(24)),
+ 
++	[RST_BUS_EPHY]		= RESET(0x2c8, BIT(2)),
++
+ 	[RST_BUS_UART0]		= RESET(0x2d8, BIT(16)),
+ 	[RST_BUS_UART1]		= RESET(0x2d8, BIT(17)),
+ 	[RST_BUS_UART2]		= RESET(0x2d8, BIT(18)),
+-- 
+2.36.2
+

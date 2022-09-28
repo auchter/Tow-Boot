@@ -1,0 +1,45 @@
+From c6955eceb531a3ada472f336a65689d88d0a111d Mon Sep 17 00:00:00 2001
+From: Michael Auchter <a@phire.org>
+Date: Thu, 29 Sep 2022 19:59:51 +0000
+Subject: [PATCH 2/5] configs: enable SPI boot support for Pinecube
+
+Signed-off-by: Michael Auchter <a@phire.org>
+---
+ configs/pinecube_defconfig | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+
+diff --git a/configs/pinecube_defconfig b/configs/pinecube_defconfig
+index abe2997551..11f3d31736 100644
+--- a/configs/pinecube_defconfig
++++ b/configs/pinecube_defconfig
+@@ -1,5 +1,7 @@
+ CONFIG_ARM=y
+ CONFIG_ARCH_SUNXI=y
++CONFIG_ENV_OFFSET=0xFE0000
++CONFIG_ENV_SECT_SIZE=0x1000
+ CONFIG_DEFAULT_DEVICE_TREE="sun8i-s3-pinecube"
+ CONFIG_SPL=y
+ CONFIG_MACH_SUN8I_V3S=y
+@@ -7,9 +9,19 @@ CONFIG_SUNXI_DRAM_DDR3_1333=y
+ CONFIG_DRAM_CLK=504
+ CONFIG_DRAM_ODT_EN=y
+ CONFIG_I2C0_ENABLE=y
++CONFIG_SPL_SPI_SUNXI=y
+ CONFIG_SPL_I2C=y
++CONFIG_ENV_IS_IN_SPI_FLASH=y
++CONFIG_MTD=y
++CONFIG_DM_MTD=y
++CONFIG_DM_SPI_FLASH=y
++CONFIG_SPI_FLASH_WINBOND=y
++CONFIG_SPI_FLASH_XTX=y
++CONFIG_SPI_FLASH_MTD=y
+ # CONFIG_NETDEVICES is not set
+ CONFIG_AXP209_POWER=y
+ CONFIG_AXP_DCDC2_VOLT=1250
+ CONFIG_AXP_DCDC3_VOLT=3300
+ CONFIG_CONS_INDEX=3
++CONFIG_SPI=y
++CONFIG_DM_SPI=y
+-- 
+2.36.2
+
